@@ -1,6 +1,6 @@
 axiom Set : Type
-axiom Elem : Set -> Set -> Prop
 
+axiom Elem : Set -> Set -> Prop
 infix:50 " ∈ " => Elem
 
 axiom extensinality : ∀ x y, (∀ w, w ∈ x ↔ w ∈ y) → x = y
@@ -14,7 +14,6 @@ noncomputable def pair (x y : Set) : Set := (pair_set x y).choose
 theorem pair_ax (x y : Set) : ∀ z, z ∈ pair x y ↔ z = x ∨ z = y := (pair_set x y).choose_spec
 
 def subset (x y : Set) : Prop := ∀ z, z ∈ x → z ∈ y
-
 infix:50 " ⊆ " => subset
 
 -- Theorem
@@ -47,3 +46,8 @@ theorem subset_trans (x y z : Set) : x ⊆ y → y ⊆ z → x ⊆ z := by
   -- h₁ a : a ∈ x → a ∈ y
   -- h₂ a : a ∈ y → a ∈ z
   exact  (h₂ a) ((h₁ a) h₃)
+
+theorem empty_subset (x : Set) : empty ⊆ x := by
+  -- ∀ y, y ∈ empty → y ∈ x
+  intro y h
+  exact absurd h (empty_ax y)
