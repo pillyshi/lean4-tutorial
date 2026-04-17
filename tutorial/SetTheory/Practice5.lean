@@ -41,6 +41,8 @@ theorem binary_union_def (x y z : Set) : z ∈ (x ∪ₛ y) ↔ (z ∈ x ∨ z �
 def subset (x y : Set) : Prop := ∀ z, z ∈ x → z ∈ y
 infix:50 " ⊆ " => subset
 
+
+
 -- Theorem
 theorem empty_unique: ∀ e₁ e₂, (∀ y, ¬ y ∈ e₁) → (∀ y, ¬ y ∈ e₂) → e₁ = e₂ := by
   intro e₁ e₂ h₁ h₂
